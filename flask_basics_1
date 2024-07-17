@@ -1,0 +1,32 @@
+from flask import Flask, render_template
+
+
+app = Flask(__name__)
+
+my_college = "ASRJC"
+rival_college="CJC"
+secret_txt="chupapi unnayo he yu"
+secret_nums = [1111,7722,2,9911]
+secret_info = ["Watermelon","Jordan","Ooga"]
+@app.route("/")
+def home():
+    return "<h1>Hello World</h1><p>THis is my page"
+
+@app.route("/H2comp")
+@app.route("/computing")
+def computing():
+    return "<h1>What is computing</h1>"
+
+@app.route("/about")
+def about():
+    return render_template("about.html",my_college=my_college,rival_college=rival_college)
+    
+@app.route("/secret")
+def secret():
+    lucky_num = random.choice(secret_nums)
+    return render_template("about.html",lucky_num = lucky_num)
+    
+if __name__ =="__main__":
+        app.run(debug=True,port=1234)
+        
+    
